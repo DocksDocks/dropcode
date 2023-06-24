@@ -16,10 +16,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={poppins.className}>
+      <body>
       <Navbar /> 
-      <main>
-        {children}
-      </main>
+      {children}
+
+      </body>
     </html>
   )
 }

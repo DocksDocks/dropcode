@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import CodeDropper from ".";
 
 export default function CodeDropperID() {
   const router = useRouter();

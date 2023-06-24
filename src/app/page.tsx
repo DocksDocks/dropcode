@@ -23,7 +23,7 @@ export default function CodeDropperHome() {
   };
 
   return (
-    <main className="bg-base-200 dark:bg-base-800 min-h-screen">
+    <main className="bg-base-200 dark:bg-base-800 min-h-screen pt-10">
       <div className="flex flex-col items-center">
         <select
           value={language}
