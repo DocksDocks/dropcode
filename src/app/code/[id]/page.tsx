@@ -1,24 +1,22 @@
+"use client"
+
 import CodeDropper from "@/components/CodeDropper";
-import { findCodeId } from "@/hooks/db";
-import { useRouter } from "next/router";
+import { getHandler } from "@/hooks";
 import { useEffect, useState } from "react";
 
 export default function CodeDropperID({params}: {params: {id: string}}) {
   const [code, setCode] = useState("");
   const [language, setLanguage] = useState("");
-  const router = useRouter();
   useEffect(() => {
     const fetchCode = async () => {
-      const result = await findCodeId(params.id)
-      if(result){
-        setCode(result.code);
-        setLanguage(result.language);
-      } else {
-        router.push("/");
-      }
+      const data = await getHandler(params.id)
+      if(data){
+        setCode(data.code);
+        setLanguage(data.language);
+      } 
     };
     fetchCode();
-  }, [params, router]);
+  }, [params]);
 
   return <CodeDropper code={code} language={language}/>;
 }

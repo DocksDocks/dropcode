@@ -1,47 +1,29 @@
+import { ICode } from '@/interfaces'
 import { NextResponse } from 'next/server'
- 
-import { PrismaClient } from "@prisma/client";
 
-export interface ICode {
-    id: string
-    code: string
-    language: string
-    expirationDate: Date
-}
-
-
-export const prisma = new PrismaClient();
-
-export async function GET() {
-  const res = await fetch('https://data.mongodb-api.com/...', {
+export async function GET(request: Request) {
+  const id = new URL(request.url).searchParams.get("id")
+  console.log(id)
+  const data = await fetch(`${process.env.API_URL}/code/${id}`, {
+    method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'API-Key': process.env.DATA_API_KEY,
     },
-  })
-  const data = await res.json()
- 
-  return NextResponse.json({ data })
-}
-
-
-export async function checkExistCodeId(id: string) {
-    const idExists = await prisma.code.findUnique({ where: { id } })
-    if (idExists) return true
+  }).then(res => {
+    if (res.ok) return res.json()
     return false
+  })
+  return NextResponse.json(data as ICode)
 }
 
-export async function findCodeId(id: string) {
-    const code = await prisma.code.findUnique({ where: { id } })
-    return code
-}
-
-export async function insertCodeId(data: ICode) {
-    const newCode = await prisma.code.create({ data })
-    return newCode
-}
-
-export async function deleteWhereExpiredCodeId(){
-    const code = await prisma.code.deleteMany({ where: { expirationDate: { lte: new Date() } } })
-    return code
+export async function POST(request: Request) {
+  const dataSent = await request.json()
+  const data = await fetch(`${process.env.API_URL}/code`, {
+    method: 'POST',
+    body: JSON.stringify(dataSent),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then(res => { return res.json() })
+  return NextResponse.json(await data as ICode)
 }

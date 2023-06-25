@@ -1,9 +1,9 @@
 "use client"
 
-import { checkExistCodeId, insertCodeId } from '@/hooks/db';
-import { ICode } from '@/model';
+import { getHandler, postHandler } from '@/hooks';
+import { ICode } from '@/interfaces';
 import { nanoid } from 'nanoid';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export default function CodeDropperHome() {
@@ -18,18 +18,18 @@ export default function CodeDropperHome() {
     // Store the code and expiration date in the PostgreSQL database
     let insertedCode: ICode;
     const data: ICode = { id, code, language, expirationDate}
-    if(await checkExistCodeId(id)) { // Check if the nanoid already exists in the database
-      insertedCode = await handleGenerate();
+    const idExists = await getHandler(id);
+    if(idExists) { // Check if the nanoid already exists in the database
+      // insertedCode = await handleGenerate();
     } else {
-      insertedCode = await insertCodeId(data)
+      insertedCode = await postHandler(data);
     }
     // Redirect to the generated URL
     router.push(url);
-    return insertedCode;
   };
 
   return (
-    <main className="bg-base-200 dark:bg-base-800 min-h-screen">
+    <main className="bg-base-200 dark:bg-base-800 min-h-screen pt-10">
       <div className="flex flex-col items-center">
         <select
           value={language}
