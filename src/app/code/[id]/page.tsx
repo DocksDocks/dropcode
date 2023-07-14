@@ -1,10 +1,10 @@
 "use client"
 
-import CodeDropper from "@/components/CodeDropper";
+import Dropcode from "@/components/code/Dropcode";
 import { getHandler } from "@/hooks";
 import { useEffect, useState } from "react";
 
-export default function CodeDropperID({params}: {params: {id: string}}) {
+export default function DropcodeID({params}: {params: {id: string}}) {
   const [code, setCode] = useState("");
   const [language, setLanguage] = useState("");
   useEffect(() => {
@@ -18,5 +18,5 @@ export default function CodeDropperID({params}: {params: {id: string}}) {
     fetchCode();
   }, [params]);
 
-  return <CodeDropper code={code} language={language}/>;
+  return <Dropcode code={code} language={language} />;
 }

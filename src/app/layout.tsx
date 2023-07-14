@@ -5,7 +5,7 @@ import './globals.css';
 const poppins = Poppins({ weight: "400", subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Code Dropper',
+  title: 'dropcode',
   description: 'A place to share code snippets',
 }
 
