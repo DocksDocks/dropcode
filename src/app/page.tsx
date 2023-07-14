@@ -30,7 +30,7 @@ export default function DropcodeHome() {
   };
 
   return (
-    <main className="bg-base-200 dark:bg-base-800 min-h-screen pt-10">
+    <main className="bg-base-200 dark:bg-base-800 h-full mt-12">
       <div className="flex flex-col items-center">
         <SelectButton language={language} setLanguage={setLanguage}/>
         <textarea
