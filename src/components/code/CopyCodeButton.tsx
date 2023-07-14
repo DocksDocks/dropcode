@@ -1,13 +1,14 @@
-import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
-export default function CopyUrlButton () {
+interface CopyCodeButtonProps {
+    code: string;
+}
+
+export default function CopyCodeButton ({code}: CopyCodeButtonProps) {
   const [copied, setCopied] = useState(false);
-  const path = usePathname()
-  const fullPath = process.env.NEXT_PUBLIC_SITE_URL + path;
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(fullPath);
+      await navigator.clipboard.writeText(code);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (error) {
@@ -18,10 +19,10 @@ export default function CopyUrlButton () {
   return (
     <div className="flex items-center space-x-2 mb-3">
       <button
-        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-4 text-4xl w-full rounded"
+        className="bg-emerald-400 hover:bg-emerald-600 text-white font-semibold py-4 text-4xl px-4 w-full rounded"
         onClick={handleCopy}
       >
-        {copied ? 'Copied!' : 'COPY URL'}
+        {copied ? 'COPIED!' : 'COPY CODE'}
       </button>
     </div>
   );
