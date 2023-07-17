@@ -17,12 +17,12 @@ export default function CopyUrlButton() {
   };
 
   return (
-    <div className="mb-2 justify-center">
+    <div className="mb-2">
       <button
-        className="bg-blue-500 hover:bg-blue-600  w-full
-        flex items-center space-x-1 py-4 rounded 
-        text-center justify-center content-center place-content-center
-        text-4xl text-white font-semibold"
+        className="bg-blue-500 hover:bg-blue-600  
+        w-full space-x-1 py-4 rounded 
+        flex place-content-center
+        text-center text-4xl text-white font-semibold"
         onClick={handleCopy}
       >
         <HiOutlineClipboard />

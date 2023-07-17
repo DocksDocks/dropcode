@@ -1,25 +1,21 @@
 import Link from "next/link";
-import { HiOutlinePencil } from "react-icons/hi";
+import { HiOutlinePencil, HiOutlinePencilAlt } from "react-icons/hi";
 interface EditCodeButtonProps {
-  id: string;
-  code: string;
-  language: string;
+  setIsEditing: React.Dispatch<React.SetStateAction<boolean>>;
+  isEditing: boolean;
 }
 
-export default function EditCodeButton({ id, code, language }: EditCodeButtonProps) {
+export default function EditCodeButton({ setIsEditing, isEditing }: EditCodeButtonProps) {
   return (
-    <div className="mb-2 justify-center">
-      <Link className="bg-yellow-500 hover:bg-yellow-600 w-full
-        flex items-center space-x-1 py-4 rounded 
-        text-center justify-center content-center place-content-center
-        text-4xl text-white font-semibold"
-        href={{
-          pathname: `/edit/${id}`,
-          query: { code, language },
-        }}>
-        <HiOutlinePencil />
+    <div className="mb-2">
+      <button className="bg-yellow-500 hover:bg-yellow-600
+        w-full space-x-1 py-4 rounded 
+        flex place-content-center
+        text-center text-4xl text-white font-semibold"
+        onClick={() => {setIsEditing(true) }}>
+        <HiOutlinePencilAlt />
         <span className="inline-block">EDIT CODE</span>
-      </Link>
+      </button>
     </div>
   );
 }

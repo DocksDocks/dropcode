@@ -11,14 +11,22 @@ import SelectButton from "./home/SelectButton";
 interface SendCodeProps {
     code?: string;
     language?: string;
+    id?: string;
+    setIsEditing?: React.Dispatch<React.SetStateAction<boolean>>;
+    isEditing?: boolean;
 }
 
 export default function SendCode(props: SendCodeProps) {
     const [sendingCode, setSendingCode] = useState(false);
     const router = useRouter();
+    const propscode = props.code;
     const [code, setCode] = useState(props.code ?? "");
     const [language, setLanguage] = useState(props.language ?? 'bash');
     const handleGenerate = async () => {
+        if (code === propscode) {
+            if (props.setIsEditing) props.setIsEditing(false);
+            return;
+        }
         const id = nanoid();
         const url = `/code/${id}`;
         const expirationDate = new Date(Date.now() + (3600 * 1000 * 24));
