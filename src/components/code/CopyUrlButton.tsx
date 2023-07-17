@@ -1,7 +1,8 @@
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { HiOutlineClipboard } from "react-icons/hi";
 
-export default function CopyUrlButton () {
+export default function CopyUrlButton() {
   const [copied, setCopied] = useState(false);
   const path = usePathname()
   const fullPath = process.env.NEXT_PUBLIC_SITE_URL + path;
@@ -16,12 +17,16 @@ export default function CopyUrlButton () {
   };
 
   return (
-    <div className="flex items-center space-x-2 mb-3">
+    <div className="mb-2 justify-center">
       <button
-        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-4 text-4xl w-full rounded"
+        className="bg-blue-500 hover:bg-blue-600  w-full
+        flex items-center space-x-1 py-4 rounded 
+        text-center justify-center content-center place-content-center
+        text-4xl text-white font-semibold"
         onClick={handleCopy}
       >
-        {copied ? 'Copied!' : 'COPY URL'}
+        <HiOutlineClipboard />
+        <span className='inline-block'>{copied ? 'Copied!' : 'COPY URL'}</span>
       </button>
     </div>
   );

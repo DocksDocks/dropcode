@@ -1,7 +1,7 @@
 "use client"
 
 import Dropcode from "@/components/code/Dropcode";
-import Loading from "@/components/code/Loading";
+import Loading from "@/components/Loading";
 import { getHandler } from "@/hooks";
 import { useEffect, useState } from "react";
 
@@ -16,13 +16,13 @@ export default function DropcodeID({ params }: { params: { id: string } }) {
         setCode(data.code);
         setLanguage(data.language);
       }
-      setLoading(false); // Set loading to false after fetch is complete
+      setLoading(false);
     };
     fetchCode();
   }, [params]);
   if (loading) {
     return <Loading />; // Show loading component while fetch is in progress
   } else {
-    return <Dropcode code={code} language={language} />;
+    return <Dropcode id={params.id} code={code} language={language} />;
   }
 }

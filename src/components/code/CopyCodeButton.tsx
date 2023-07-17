@@ -1,10 +1,10 @@
 import { useState } from 'react';
-
+import { HiOutlineClipboard } from "react-icons/hi";
 interface CopyCodeButtonProps {
-    code: string;
+  code: string;
 }
 
-export default function CopyCodeButton ({code}: CopyCodeButtonProps) {
+export default function CopyCodeButton({ code }: CopyCodeButtonProps) {
   const [copied, setCopied] = useState(false);
   const handleCopy = async () => {
     try {
@@ -17,12 +17,16 @@ export default function CopyCodeButton ({code}: CopyCodeButtonProps) {
   };
 
   return (
-    <div className="flex items-center space-x-2 mb-3">
+    <div className="mb-2 justify-center">
       <button
-        className="bg-emerald-400 hover:bg-emerald-600 text-white font-semibold py-4 text-4xl px-4 w-full rounded"
+        className="bg-emerald-500 hover:bg-emerald-600 w-full
+        flex items-center space-x-1 py-4 rounded 
+        text-center justify-center content-center place-content-center
+        text-4xl text-white font-semibold"
         onClick={handleCopy}
       >
-        {copied ? 'COPIED!' : 'COPY CODE'}
+        <HiOutlineClipboard />
+        <span className='inline-block'>{copied ? 'COPIED!' : 'COPY CODE'} </span>
       </button>
     </div>
   );
