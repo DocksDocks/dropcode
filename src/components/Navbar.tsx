@@ -56,7 +56,7 @@ export default function Navbar() {
               <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
                 <li className="text-white">
                   <Link href="/about">
-                    About
+                    about
                   </Link>
                 </li>
                 <li className="text-white">

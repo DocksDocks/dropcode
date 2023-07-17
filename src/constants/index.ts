@@ -1,8 +1,8 @@
 export const listAbout = [
-    { text: "Repository", url: "https://github.com/DocksDocks/dropcode" },
-    { text: "Portfolio", url: "https://eduardomarquez.me/" },
-    { text: "Github", url: "https://github.com/DocksDocks" },
-    { text: "LinkedIn", url: "https://www.linkedin.com/in/eduardo-marquez-costa-barbosa/" },
+    { text: "repository", url: "https://github.com/DocksDocks/dropcode" },
+    { text: "portfolio", url: "https://eduardomarquez.me/" },
+    { text: "github", url: "https://github.com/DocksDocks" },
+    { text: "linkedin", url: "https://www.linkedin.com/in/eduardo-marquez-costa-barbosa/" },
   ];
 
   export const languageList = [

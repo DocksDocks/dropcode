@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { HiOutlineClipboard } from "react-icons/hi";
+import DefaultCodeButton from './DefaultCodeButton';
 interface CopyCodeButtonProps {
   code: string;
 }
@@ -17,15 +18,6 @@ export default function CopyCodeButton({ code }: CopyCodeButtonProps) {
   };
 
   return (
-      <button
-        className="bg-emerald-500 hover:bg-emerald-600
-        w-full space-x-1 py-4 rounded 
-        flex place-content-center
-        text-center sm:text-xl lg:text-3xl xl:text-4xl text-white font-semibold"
-        onClick={handleCopy}
-      >
-        <HiOutlineClipboard className='mt-1 lg:mt-0 xl:mt-0'/>
-        <span className='inline-block'>{copied ? 'COPIED!' : 'COPY CODE'} </span>
-      </button>
+    <DefaultCodeButton color={'emerald'} onClick={handleCopy} text={copied ? 'copied!' : 'copy code'} icon={HiOutlineClipboard} />
   );
 };

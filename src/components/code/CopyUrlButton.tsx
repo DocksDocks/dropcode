@@ -1,6 +1,7 @@
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { HiOutlineClipboard } from "react-icons/hi";
+import DefaultCodeButton from './DefaultCodeButton';
 
 export default function CopyUrlButton() {
   const [copied, setCopied] = useState(false);
@@ -17,15 +18,7 @@ export default function CopyUrlButton() {
   };
 
   return (
-      <button
-        className="bg-blue-500 hover:bg-blue-600  
-        w-full space-x-1 py-4 rounded 
-        flex place-content-center
-        text-center sm:text-xl lg:text-3xl xl:text-4xl text-white font-semibold"
-        onClick={handleCopy}
-      >
-        <HiOutlineClipboard className='mt-1 lg:mt-0 xl:mt-0'/>
-        <span className='inline-block'>{copied ? 'Copied!' : 'COPY URL'}</span>
-      </button>
+    <DefaultCodeButton color={'blue'} onClick={handleCopy}
+      text={copied ? 'copied!' : 'copy url'} icon={HiOutlineClipboard} />
   );
 };

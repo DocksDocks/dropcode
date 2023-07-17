@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Loading from "./Loading";
 import SelectButton from "./home/SelectButton";
+import CustomizableButton from "./sendcode/CustomizableButton";
 
 interface SendCodeProps {
     code?: string;
@@ -22,9 +23,13 @@ export default function SendCode(props: SendCodeProps) {
     const propscode = props.code;
     const [code, setCode] = useState(props.code ?? "");
     const [language, setLanguage] = useState(props.language ?? 'bash');
+    const handleCancel = () => {
+        if (props.setIsEditing) props.setIsEditing(false);
+        return;
+    }
     const handleGenerate = async () => {
         if (code === propscode) {
-            if (props.setIsEditing) props.setIsEditing(false);
+            handleCancel();
             return;
         }
         const id = nanoid();
@@ -40,7 +45,6 @@ export default function SendCode(props: SendCodeProps) {
         } else {
             insertedCode = await postHandler(data);
         }
-        setSendingCode(false);
         // Redirect to the generated URL
         router.push(url);
     };
@@ -56,12 +60,10 @@ export default function SendCode(props: SendCodeProps) {
                     maxLength={5000} // Set the maximum character limit to 5000
                     className="w-1/2 h-3/4 mb-4 p-3 bg-white dark:bg-gray-900 text-black dark:text-white rounded"
                 />
-                <button
-                    onClick={handleGenerate}
-                    className="py-3 px-14 rounded btn btn-primary bg-blue-500 hover:bg-blue-600 text-white dark:bg-blue-800 dark:hover:bg-blue-900"
-                >
-                    dropcode
-                </button>
+                <div className="flex space-x-2">
+                    <CustomizableButton onClick={handleGenerate} text={'dropcode'} color={'blue'}/>
+                    {props.isEditing && <CustomizableButton onClick={handleCancel} text={'cancel'} color={'red'}/>}
+                </div>
             </div>
         </main>
     )
