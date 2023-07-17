@@ -17,17 +17,15 @@ export default function CopyUrlButton() {
   };
 
   return (
-    <div className="mb-2">
       <button
         className="bg-blue-500 hover:bg-blue-600  
         w-full space-x-1 py-4 rounded 
         flex place-content-center
-        text-center text-4xl text-white font-semibold"
+        text-center sm:text-xl lg:text-3xl xl:text-4xl text-white font-semibold"
         onClick={handleCopy}
       >
-        <HiOutlineClipboard />
+        <HiOutlineClipboard className='mt-1 lg:mt-0 xl:mt-0'/>
         <span className='inline-block'>{copied ? 'Copied!' : 'COPY URL'}</span>
       </button>
-    </div>
   );
 };
