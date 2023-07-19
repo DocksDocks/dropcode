@@ -4,7 +4,7 @@ import { darcula } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import CopyUrlButton from "./CopyUrlButton";
 import CopyCodeButton from "./CopyCodeButton";
 import EditCodeButton from "./EditCodeButton";
-import SendCode from "../SendCode";
+import SendCode from "../home/SendCode";
 
 interface DropcodeProps {
   id: string;

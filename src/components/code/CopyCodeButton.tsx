@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { HiOutlineClipboard } from "react-icons/hi";
 import DefaultCodeButton from './DefaultCodeButton';
+import CustomizableButton from '../CustomizableButton';
 interface CopyCodeButtonProps {
   code: string;
 }
@@ -18,6 +19,6 @@ export default function CopyCodeButton({ code }: CopyCodeButtonProps) {
   };
 
   return (
-    <DefaultCodeButton color={'emerald'} onClick={handleCopy} text={copied ? 'copied!' : 'copy code'} icon={HiOutlineClipboard} />
+    <CustomizableButton onClick={handleCopy} text={copied ? 'copied!' : 'copy code'} color={'emerald'} class={'code'} icon={HiOutlineClipboard} />
   );
 };

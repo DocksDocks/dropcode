@@ -2,6 +2,7 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { HiOutlineClipboard } from "react-icons/hi";
 import DefaultCodeButton from './DefaultCodeButton';
+import CustomizableButton from '../CustomizableButton';
 
 export default function CopyUrlButton() {
   const [copied, setCopied] = useState(false);
@@ -18,7 +19,6 @@ export default function CopyUrlButton() {
   };
 
   return (
-    <DefaultCodeButton color={'blue'} onClick={handleCopy}
-      text={copied ? 'copied!' : 'copy url'} icon={HiOutlineClipboard} />
+    <CustomizableButton onClick={handleCopy} text={copied ? 'copied!' : 'copy url'} color={'blue'} class={'code'} icon={HiOutlineClipboard} />
   );
 };

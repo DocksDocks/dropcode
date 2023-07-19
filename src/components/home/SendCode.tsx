@@ -5,9 +5,9 @@ import { ICode } from "@/interfaces";
 import { nanoid } from "nanoid";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import Loading from "./Loading";
-import SelectButton from "./home/SelectButton";
-import CustomizableButton from "./sendcode/CustomizableButton";
+import Loading from "../Loading";
+import SelectButton from "./SelectButton";
+import CustomizableButton from "../CustomizableButton";
 
 interface SendCodeProps {
     code?: string;
@@ -20,7 +20,6 @@ interface SendCodeProps {
 export default function SendCode(props: SendCodeProps) {
     const [sendingCode, setSendingCode] = useState(false);
     const router = useRouter();
-    const propscode = props.code;
     const [code, setCode] = useState(props.code ?? "");
     const [language, setLanguage] = useState(props.language ?? 'bash');
     const handleCancel = () => {
@@ -28,7 +27,7 @@ export default function SendCode(props: SendCodeProps) {
         return;
     }
     const handleGenerate = async () => {
-        if (code === propscode) {
+        if (code === props.code) {
             handleCancel();
             return;
         }
@@ -61,8 +60,8 @@ export default function SendCode(props: SendCodeProps) {
                     className="w-1/2 h-3/4 mb-4 p-3 bg-white dark:bg-gray-900 text-black dark:text-white rounded"
                 />
                 <div className="flex space-x-2">
-                    <CustomizableButton onClick={handleGenerate} text={'dropcode'} color={'blue'}/>
-                    {props.isEditing && <CustomizableButton onClick={handleCancel} text={'cancel'} color={'red'}/>}
+                    <CustomizableButton onClick={handleGenerate} text={'dropcode'} color={'blue'} class={'home'} />
+                    {props.isEditing && <CustomizableButton onClick={handleCancel} text={'cancel'} color={'red'} class={'home'} />}
                 </div>
             </div>
         </main>
