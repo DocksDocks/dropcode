@@ -1,7 +1,6 @@
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { HiOutlineClipboard } from "react-icons/hi";
-import DefaultCodeButton from './DefaultCodeButton';
 import CustomizableButton from '../CustomizableButton';
 
 export default function CopyUrlButton() {

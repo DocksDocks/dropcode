@@ -1,5 +1,4 @@
 import { HiOutlinePencilAlt } from "react-icons/hi";
-import DefaultCodeButton from "./DefaultCodeButton";
 import CustomizableButton from "../CustomizableButton";
 interface EditCodeButtonProps {
   setIsEditing: React.Dispatch<React.SetStateAction<boolean>>;

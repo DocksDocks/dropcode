@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { HiOutlineClipboard } from "react-icons/hi";
-import DefaultCodeButton from './DefaultCodeButton';
 import CustomizableButton from '../CustomizableButton';
 interface CopyCodeButtonProps {
   code: string;
