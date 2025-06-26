@@ -17,17 +17,18 @@ interface MermaidProps {
 
 const Mermaid: FC<MermaidProps> = ({ chart }) => {
   useEffect(() => {
-    // Quando o componente for montado, remove o atributo 'data-processed'
-    // para forçar o Mermaid a renderizar novamente.
     const mermaidElements = document.querySelectorAll('.mermaid');
     mermaidElements.forEach((el) => {
       el.removeAttribute('data-processed');
     });
-    // Renderiza o conteúdo
     mermaid.contentLoaded();
-  }, [chart]); // Executa o efeito sempre que o conteúdo do gráfico mudar
+  }, [chart]);
 
-  return <div className="mermaid">{chart}</div>;
+  return (
+    <div className="flex items-center justify-center bg-gray-800 p-4 rounded-md">
+      <div className="mermaid">{chart}</div>
+    </div>
+  );
 };
 
 export default Mermaid;
