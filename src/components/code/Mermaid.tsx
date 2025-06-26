@@ -25,8 +25,10 @@ const Mermaid: FC<MermaidProps> = ({ chart }) => {
   }, [chart]);
 
   return (
-    <div className="flex items-center justify-center bg-gray-800 p-4 rounded-md">
-      <div className="mermaid">{chart}</div>
+    <div className="flex items-start justify-center bg-gray-800 px-4 py-8 mt-4 rounded-md overflow-auto">
+      <div style={{ transform: 'scale(2)', transformOrigin: 'top' }}>
+        <div className="mermaid">{chart}</div>
+      </div>
     </div>
   );
 };
