@@ -7,6 +7,9 @@ const config: MermaidConfig = {
   startOnLoad: true,
   theme: "dark",
   securityLevel: "loose",
+  themeVariables: {
+    fontSize: "24px",
+  },
 };
 
 mermaid.initialize(config);
@@ -25,8 +28,8 @@ const Mermaid: FC<MermaidProps> = ({ chart }) => {
   }, [chart]);
 
   return (
-    <div className="flex items-start justify-center bg-gray-800 px-4 py-8 mt-4 rounded-md">
-      <div style={{ transform: 'scale(4)', transformOrigin: 'top' }}>
+    <div className="flex items-start justify-center bg-gray-800 px-4 py-8 my-8 rounded-md">
+      <div style={{ transform: 'scale(4)', transformOrigin: 'top' }} className="bg-gray-800">
         <div className="mermaid">{chart}</div>
       </div>
     </div>
