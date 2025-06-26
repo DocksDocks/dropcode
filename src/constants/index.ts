@@ -15,6 +15,7 @@ export const languageList = [
   { value: 'json', text: 'JSON' },
   { value: 'jsx', text: 'JSX' },
   { value: 'kotlin', text: 'Kotlin' },
+  { value: 'mermaid', text: 'Mermaid' },
   { value: 'python', text: 'Python' },
   { value: 'sql', text: 'SQL' },
   { value: 'swift', text: 'Swift' },

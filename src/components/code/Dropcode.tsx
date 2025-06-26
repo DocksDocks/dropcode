@@ -5,6 +5,7 @@ import CopyUrlButton from "./CopyUrlButton";
 import CopyCodeButton from "./CopyCodeButton";
 import EditCodeButton from "./EditCodeButton";
 import SendCode from "../home/SendCode";
+import Mermaid from "./Mermaid";
 
 interface DropcodeProps {
   id: string;
@@ -28,9 +29,13 @@ export default function Dropcode({ id, code, language }: DropcodeProps) {
                 <CopyUrlButton />
 
               </div>
-              <SyntaxHighlighter language={language} style={darcula}>
-                {code}
-              </SyntaxHighlighter>
+              {language === 'mermaid' ? (
+                <Mermaid chart={code} />
+              ) : (
+                <SyntaxHighlighter language={language} style={darcula}>
+                  {code}
+                </SyntaxHighlighter>
+              )}
             </div>
           ) : (
             <p>No code found.</p>
