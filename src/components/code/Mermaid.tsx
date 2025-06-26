@@ -8,7 +8,7 @@ const config: MermaidConfig = {
   theme: "dark",
   securityLevel: "loose",
   themeVariables: {
-    fontSize: "24px",
+    fontSize: "calc(10px + 0.5vw)",
   },
 };
 
