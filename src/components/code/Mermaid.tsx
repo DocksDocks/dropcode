@@ -1,7 +1,7 @@
 // src/components/code/Mermaid.tsx
 import mermaid from "mermaid";
 import type { MermaidConfig } from "mermaid";
-import { useEffect, FC } from "react";
+import { useState, useEffect, FC } from "react";
 
 const config: MermaidConfig = {
   startOnLoad: true,
@@ -21,15 +21,17 @@ interface MermaidProps {
 const Mermaid: FC<MermaidProps> = ({ chart }) => {
   useEffect(() => {
     const mermaidElements = document.querySelectorAll('.mermaid');
-    mermaidElements.forEach((el) => {
-      el.removeAttribute('data-processed');
-    });
-    mermaid.contentLoaded();
+    if (mermaidElements.length) {
+      mermaidElements.forEach((el) => {
+        el.removeAttribute('data-processed');
+      });
+      mermaid.contentLoaded();
+    }
   }, [chart]);
 
   return (
-    <div className="flex items-start justify-center bg-gray-800 p-4 mb-4 rounded-md w-full overflow-x-auto">
-        <div className="mermaid">{chart}</div>
+    <div className="bg-gray-800 p-4 mb-4 rounded-md h-full overflow-x-auto">
+      <div className="mermaid">{chart}</div>
     </div>
   );
 };
